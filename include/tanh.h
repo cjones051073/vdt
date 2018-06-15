@@ -38,7 +38,8 @@ inline double fast_tanh(double x){
 	// precision)
 	//
 	// NB: branch-free code takes longer to execute
-	if (std::abs(x) > 20.) return std::copysign(1., x);
+  using namespace std;
+	if (std::abs(x) > 20.) return copysign(1., x);
 	// strategy for large arguments: tanh(2x) = 2 tanh(x)/(1 + tanh^2(x))
 	// idea is to use this "argument halving" a couple of times, and use a
 	// very short Padé approximation for the rest of the way
@@ -60,7 +61,8 @@ inline float fast_tanhf( float x ) {
 	// approximation is sufficient for float
 	//
 	// NB: branch-free code takes longer to execute
-	if (std::abs(x) > 9.1f) return std::copysign(1.f, x);
+  using namespace std;
+	if (std::abs(x) > 9.1f) return copysign(1.f, x);
 	const auto xx = x * 0.125f;
 	const auto xx2 = xx * xx;
 	auto tanh = xx * (xx2 + 15) / (6 * xx2 + 15);
